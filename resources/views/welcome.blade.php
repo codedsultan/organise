@@ -35,10 +35,17 @@
                                     </a>
                                 @else
                                     <a
-                                        href="{{ route('login') }}"
+                                        href="{{ route('user.login') }}"
                                         class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                     >
-                                        Log in
+                                        User Log in
+                                    </a>
+
+                                    <a
+                                        href="{{ route('organiser.login') }}"
+                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        Organiser Log in
                                     </a>
 
                                     @if (Route::has('register'))
