@@ -5,6 +5,9 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\DateTime;
 
 class Event extends Resource
 {
@@ -20,7 +23,7 @@ class Event extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'tittle';
 
     /**
      * The columns that should be searched.
@@ -28,7 +31,7 @@ class Event extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id','title'
     ];
 
     /**
@@ -41,6 +44,35 @@ class Event extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('Title')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Description')
+                ->sortable()
+                ->rules('required', 'string'),
+
+            Text::make('Location')
+                ->sortable()
+                ->rules('required', 'string'),
+
+            Text::make('Location Address')
+                ->sortable()
+                ->rules('required', 'string'),
+
+            Date::make('Start Date')
+                ->sortable()
+                ->rules('required', 'string'),
+
+            Date::make('End Date')
+                ->sortable()
+                ->rules('required', 'string'),
+
+            Text::make('Venue Name')
+                ->sortable()
+                ->rules('required', 'string'),
+
+
         ];
     }
 

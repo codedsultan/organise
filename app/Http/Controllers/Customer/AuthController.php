@@ -74,7 +74,7 @@ class AuthController extends Controller
            'email'=>'required|email|exists:customers,email',
            'password'=>'required|min:5|max:30'
         ],[
-            'email.exists'=>'This email is exists already'
+            'email.exists'=>'This email does not exist'
         ]);
 
         $creds = $request->only('email','password');
