@@ -19,6 +19,13 @@ class Event extends Model implements HasMedia
 
 
     protected $appends = ['featured_image','event_images'];
+
+    protected $casts = [
+        'start_date' => 'datetime:Y-m-d',
+        'end_date' => 'datetime:Y-m-d',
+        'start_time' => 'timestamp',
+        'end_time' => 'timestamp'
+    ];
     /**
      * Get the tickets for the event.
      */

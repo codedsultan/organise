@@ -17,8 +17,10 @@ return new class extends Migration
             $table->string('slug')->unique()->nullable();
             $table->string('bg_image_path')->nullable();
             $table->text('description');
-            $table->dateTime('start_date')->nullable();
-            $table->dateTime('end_date')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->timestamp('start_time')->nullable();
+            $table->timestamp('end_time')->nullable();
             $table->integer('organiser_id')->index();
             // $table->foreign('organiser_id')->references('id')->on('organisers');
             $table->string('venue_name')->nullable();
