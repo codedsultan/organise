@@ -46,11 +46,25 @@ class Event extends Resource
             ID::make()->sortable(),
             Text::make('Title')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->onlyOnIndex()
+                ->displayUsing(function ($value) {
+                    return substr($value, 0, 35) . '...';
+                }),
+
+            Text::make('Title')
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
             Text::make('Description')
                 ->sortable()
-                ->rules('required', 'string'),
+                ->onlyOnIndex()
+                ->displayUsing(function ($value) {
+                    return substr($value, 0, 35) . '...';
+                }),
+
+            Text::make('Description')
+                ->rules('required', 'string')
+                ->hideFromIndex(),
 
             Text::make('Location')
                 ->sortable()
@@ -62,15 +76,28 @@ class Event extends Resource
 
             Date::make('Start Date')
                 ->sortable()
-                ->rules('required', 'string'),
+                ->rules('string'),
 
             Date::make('End Date')
                 ->sortable()
-                ->rules('required', 'string'),
+                ->rules('string'),
+
+            // DateTime::make('Start Time'),
+            // DateTime::make('End Time'),
+
+            Text::make('Start Time')->resolveUsing(function ($date) {
+                $timestamp = new \DateTime($date);
+                return $timestamp->format('H:i');
+            })->rules('date_format:"H:i"')->withMeta(['extraAttributes' => ['type' => 'time']]),
+
+            Text::make('End Time')->resolveUsing(function ($date) {
+                $timestamp = new \DateTime($date);
+                return $timestamp->format('H:i');
+            })->rules('date_format:"H:i"')->withMeta(['extraAttributes' => ['type' => 'time']]),
 
             Text::make('Venue Name')
                 ->sortable()
-                ->rules('required', 'string'),
+                ->rules( 'string'),
 
 
         ];

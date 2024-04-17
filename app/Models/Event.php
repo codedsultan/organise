@@ -23,8 +23,8 @@ class Event extends Model implements HasMedia
     protected $casts = [
         'start_date' => 'datetime:Y-m-d',
         'end_date' => 'datetime:Y-m-d',
-        'start_time' => 'timestamp',
-        'end_time' => 'timestamp'
+        'start_time' => 'datetime',
+        'end_time' => 'datetime'
     ];
     /**
      * Get the tickets for the event.

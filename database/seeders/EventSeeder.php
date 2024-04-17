@@ -24,6 +24,10 @@ class EventSeeder extends Seeder
             'organiser_id' => $organiser->id
         ]);
 
+        Event::factory(5)->create([
+            'organiser_id' => $organiser->id
+        ]);
+
         $ticket1 = Ticket::factory()->create([
             'event_id' => $event->id,
             'type' => 'silver',
@@ -45,6 +49,10 @@ class EventSeeder extends Seeder
         ]);
 
         $event1 = Event::factory()->create([
+            'organiser_id' => $organiser1->id
+        ]);
+
+        Event::factory(5)->create([
             'organiser_id' => $organiser1->id
         ]);
 
