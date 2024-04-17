@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('organiser')->name('organiser.')->group(function(){
 
-  Route::middleware(['guest:organiser'])->group(function(){
+    Route::middleware(['guest:organiser'])->group(function(){
         Route::view('/login','dashboard.organiser.login')->name('login');
         Route::view('/register','dashboard.organiser.register')->name('register');
         Route::post('/create',[AuthController::class,'create'])->name('create');
@@ -20,9 +20,9 @@ Route::prefix('organiser')->name('organiser.')->group(function(){
         Route::post('/password/forgot',[ForgotPasswordController::class,'sendResetLink'])->name('forgot.password.link');
         Route::get('/password/reset/{token}',[ForgotPasswordController::class,'showResetForm'])->name('reset.password.form');
         Route::post('/password/reset',[ForgotPasswordController::class,'resetPassword'])->name('reset.password');
-  });
+    });
 
-  Route::middleware(['auth:organiser','verified_organiser'])->group(function(){
+    Route::middleware(['auth:organiser','verified_organiser'])->group(function(){
         Route::view('/','dashboard.organiser.home')->name('home');
         Route::view('/home','dashboard.organiser.home')->name('home');
         Route::post('/logout',[AuthController::class,'logout'])->name('logout');
@@ -35,7 +35,7 @@ Route::prefix('organiser')->name('organiser.')->group(function(){
         Route::get('/events/{id}/edit', [EventController::class, 'edit'])->name('edit.events');
         Route::put('/events/{id}', [EventController::class, 'update'])->name('update.events');
         Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('destroy.events');
-  });
+    });
 
 
 
