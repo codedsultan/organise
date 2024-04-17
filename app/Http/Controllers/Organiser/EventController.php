@@ -14,9 +14,9 @@ class EventController extends Controller
     *
     * @return Response
     */
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::orderBy('id','desc')->paginate(5);
+        $events = Event::where('organiser_id',$request->user()->id)->orderBy('id','desc')->paginate(5);
         return view('dashboard.organiser.event.index', compact('events'));
     }
 
