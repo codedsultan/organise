@@ -430,3 +430,217 @@
   b, strong {
       font-weight: 700 !important;
   }
+
+  /* */
+  .header.shop .right-bar .sinlge-bar.top-search a {
+	transform: translateY(3px);
+}
+.header.shop .right-bar .sinlge-bar.top-search a:hover {
+	color:#F7941D;
+}
+.header.shop .right-bar .sinlge-bar .single-icon{
+	color:#333;
+	font-size:20px;
+	position:relative;
+}
+.header.shop .right-bar .sinlge-bar .single-icon:hover{
+	color:#F7941D;
+}
+.header.shop .right-bar .sinlge-bar .single-icon .total-count {
+	position: absolute;
+	top: -7px;
+	right: -8px;
+	background: #f6931d;
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	text-align: center;
+	color: #fff;
+	border-radius: 100%;
+	font-size: 11px;
+}
+.header.shop .right-bar .sinlge-bar{
+	display:inline-block;
+	margin-right:25px;
+}
+.header.shop .right-bar .sinlge-bar:last-child{
+	margin-right:0px;
+}
+.header.shop .right-bar .sinlge-bar li a:hover{
+	color:#F7941D;
+}
+  /* Shopping Cart */
+.header .shopping {
+	display: inline-block;
+	z-index: 9999;
+}
+.header .shopping .icon {
+	position: relative;
+	cursor:pointer;
+	color:#222;
+}
+.header .shopping .shopping-item {
+	position: absolute;
+	top: 68px;
+	right: 0;
+	width: 300px;
+	background: #fff;
+	padding: 20px 25px;
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+	-webkit-transform: translateY(10px);
+	-moz-transform: translateY(10px);
+	transform: translateY(10px);
+	-webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	opacity:0;
+	visibility:hidden;
+	z-index:99;
+}
+.header .shopping:hover .shopping-item{
+	transform: translateY(0px);
+	opacity:1;
+	visibility:visible;
+}
+.header .shopping .dropdown-cart-header{
+	padding-bottom: 10px;
+    margin-bottom: 15px;
+	border-bottom:1px solid #e6e6e6;
+}
+.header .shopping .dropdown-cart-header span {
+	text-transform: uppercase;
+	color: #222;
+	font-size: 13px;
+	font-weight: 600;
+}
+.header .shopping .dropdown-cart-header a {
+	float: right;
+	text-transform: uppercase;
+	color: #222;
+	font-size: 13px;
+	font-weight: 600;
+}
+.header .shopping .dropdown-cart-header a:hover{
+	color:#F7941D;
+}
+.header .shopping-list li {
+	overflow: hidden;
+	border-bottom: 1px solid #e6e6e6;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	position:relative;
+}
+.header .shopping-list li .remove {
+	position: absolute;
+	left: 0;
+	bottom: 16px;
+	margin-top: -20px;
+	height: 20px;
+	width: 20px;
+	line-height: 18px;
+	text-align: center;
+	background: #fff;
+	color: #222;
+	border-radius: 0;
+	font-size: 11px;
+	border: 1px solid #ededed;
+}
+.header .shopping-list li .remove:hover{
+	background:#222;
+	color:#fff !important;
+	border-color:transparent;
+}
+.header .shopping-list .cart-img {
+	float: right;
+	border: 1px solid #ededed;
+	overflow:hidden;
+}
+.header .shopping-list .cart-img img {
+	width: 70px;
+	height: 70px;
+	border-radius:0;
+
+}
+.header .shopping-list .cart-img:hover img{
+	transform:scale(1.09);
+}
+.header .shopping-list .quantity{
+	line-height: 22px;
+    font-size: 13px;
+	padding-bottom: 30px;
+}
+.header .shopping-list h4 {
+	font-size: 14px;
+}
+.header .shopping-list h4 a {
+	font-weight: 600;
+	font-size: 13px;
+	color: #333;
+}
+.header .shopping-list h4 a:hover{
+	color:#F7941D;
+}
+.header .shopping-item .bottom {
+	text-align: center;
+}
+.header .shopping-item .total {
+	overflow:hidden;
+	display: block;
+    padding-bottom: 10px;
+}
+.header .shopping-item .total span {
+	text-transform:uppercase;
+	color:#222;
+	font-size:13px;
+	font-weight:600;
+	float:left;
+}
+.header .shopping-item .total .total-amount {
+	float:right;
+	font-size:14px;
+}
+.header .shopping-item .bottom .btn {
+	background: #222;
+	padding: 10px 20px;
+	display: block;
+	color: #fff;
+	margin-top: 10px;
+	border-radius: 0px;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 500;
+}
+.header .shopping-item .bottom .btn:hover{
+	background:#F7941D;
+	color:#fff;
+}
+.header.shop{
+	background:#fff;
+}
+.header.shop .nav-inner {
+	margin: 0;
+	float: left;
+}
+.header.shop .topbar {
+	background-color: #fff;
+	border: none;
+}
+.header.shop.v3 .topbar{
+	padding:0;
+}
+.header.shop.v3 .topbar .inner-content{
+	border-bottom:1px solid #eee;
+	padding: 12px 0px;
+}
+.header.shop .right-nav li a {
+	color: #333;
+}
+.header.shop .logo {
+	float: left;
+	margin: 19px 0 0;
+}
+.header.shop .top-contact {
+	margin-top:0px;
+}

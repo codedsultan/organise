@@ -1,8 +1,26 @@
 @extends('layouts.base')
 @section('content')
 
-<div class="row">
-    <!-- {{$event}} -->
+<div class="sinlge-bar shopping">
+    <a href="{{route('cart')}}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{Helper::cartCount()}}</span></a>
+    <!-- Shopping Item -->
+    @auth('customer')
+        <div class="shopping-item">
+            <div class="dropdown-cart-header">
+                <span>{{count(Helper::getAllProductFromCart())}} Items</span>
+                <a href="{{route('cart')}}">View Cart</a>
+            </div>
+
+            <div class="bottom">
+                <div class="total">
+                    <span>Total</span>
+                    <span class="total-amount">${{number_format(Helper::totalCartPrice(),2)}}</span>
+                </div>
+                <!-- <a href="{{route('checkout')}}" class="btn animate">Checkout</a> -->
+            </div>
+        </div>
+    @endauth
+    <!--/ End Shopping Item -->
 </div>
 <div class="container">
     <div class="row">
@@ -76,12 +94,47 @@
                                 Learn More
                             </button> -->
 
-                            <a
-                                href="{{ route('event.show',$event->id) }}"
+                            <!-- <a
+                                href=" {{route('add-to-cart',$ticket->id)}}"
                                 class="btn btn-primary"
                             >
+
                                 ADD T0 CART
-                            </a>
+                            </a> -->
+
+                            <form action="{{route('single-add-to-cart')}}" method="POST">
+                            @csrf
+                            <div class="quantity">
+                                <!-- <h6>Quantity :</h6> -->
+                                <!-- Input Order -->
+                                <!-- <div class="input-group"> -->
+                                    <!-- <div class="button minus">
+                                        <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="qty">
+                                            <i class="ti-minus"></i>
+                                        </button>
+                                    </div> -->
+
+                                    <div class="input-group mb-3">
+                                    <input type="hidden" name="id" value="{{$ticket->id}}">
+                                        <span class="input-group-text">Quantity </span>
+                                        <input type="number" name="qty" class="form-control"  data-min="1" data-max="1000" value="1" id="quantity">
+                                        <!-- <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" /> -->
+                                        <!-- <span class="input-group-text">.00</span> -->
+                                    </div>
+
+                                    <!-- <div class="button plus">
+                                        <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="qty">
+                                            <i class="ti-plus"></i>
+                                        </button>
+                                    </div> -->
+
+                                <!-- </div> -->
+                            <!--/ End Input Order -->
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">Add to cart</button>
+                        </form>
+
                                 <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
                             </div>
                         </div>
