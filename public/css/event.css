@@ -81,8 +81,8 @@
     border-bottom: none;
   } */
   img {
-      width: 100%;
-      max-width: 100%;
+      /* width: 100%;
+      max-width: 100%; */
       height: auto;
       /* padding: 30px; */
       -webkit-backface-visibility: hidden;

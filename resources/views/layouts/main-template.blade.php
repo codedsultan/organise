@@ -24,36 +24,36 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      
+
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-     
 
-     
+
+
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-square"></i> Account
-          
+
         </a>
         <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-          
+
         @if(\Request::is('admin/*') && Auth::guard('admin')->check())
 
            @include('layouts.admin-topMenus')
 
-        @elseif(\Request::is('user/*') && Auth::guard('web')->check())
+        @elseif(\Request::is('user/*') && Auth::guard('customer')->check())
 
            @include('layouts.user-topMenus')
 
-        @elseif(\Request::is('doctor/*') && Auth::guard('doctor')->check())
+        @elseif(\Request::is('organiser/*') && Auth::guard('organiser')->check())
 
-           @include('layouts.doctor-topMenus')
+           @include('layouts.organiser-topMenus')
 
          @endif
-         
+
 
         </div>
       </li>
@@ -62,7 +62,7 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-     
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -86,17 +86,17 @@
           <a class="d-block">
             @if(\Request::is('admin/*') && Auth::guard('admin')->check())
                    {{ Auth::guard('admin')->user()->name }}
-            @elseif(\Request::is('user/*') && Auth::guard('web')->check())
-                  {{ \Auth::guard('web')->user()->name }}
-            @elseif(\Request::is('doctor/*') && Auth::guard('doctor')->check())
-                  {{ \Auth::guard('doctor')->user()->name }}
+            @elseif(\Request::is('user/*') && Auth::guard('customer')->check())
+                  {{ \Auth::guard('customer')->user()->name }}
+            @elseif(\Request::is('organiser/*') && Auth::guard('organiser')->check())
+                  {{ \Auth::guard('organiser')->user()->name }}
             @endif
-          
+
           </a>
         </div>
       </div>
 
-     
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -109,17 +109,17 @@
 
                @include('layouts.admin-sideMenus')
 
-          @elseif(\Request::is('user/*') && Auth::guard('web')->check())
+          @elseif(\Request::is('user/*') && Auth::guard('customer')->check())
 
                @include('layouts.user-sideMenus')
 
-          @elseif(\Request::is('doctor/*') && Auth::guard('doctor')->check())
+          @elseif(\Request::is('organiser/*') && Auth::guard('organiser')->check())
 
-               @include('layouts.doctor-sideMenus')
+               @include('layouts.organiser-sideMenus')
 
           @endif
-         
-        
+
+
 
         </ul>
       </nav>
@@ -130,7 +130,7 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    
+
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">

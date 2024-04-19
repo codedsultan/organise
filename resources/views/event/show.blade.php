@@ -2,19 +2,19 @@
 @section('content')
 
 <div class="sinlge-bar shopping">
-    <a href="{{route('cart')}}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{Helper::cartCount()}}</span></a>
+    <!-- <a href="{{route('cart')}}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{Helper::cartCount()}}</span></a> -->
     <!-- Shopping Item -->
     @auth('customer')
         <div class="shopping-item">
             <div class="dropdown-cart-header">
-                <span>{{count(Helper::getAllProductFromCart())}} Items</span>
-                <a href="{{route('cart')}}">View Cart</a>
+                <!-- <span>{{count(Helper::getAllProductFromCart())}} Items</span> -->
+                <!-- <a href="{{route('cart')}}">View Cart</a> -->
             </div>
 
             <div class="bottom">
                 <div class="total">
-                    <span>Total</span>
-                    <span class="total-amount">${{number_format(Helper::totalCartPrice(),2)}}</span>
+                    <!-- <span>Total</span>
+                    <span class="total-amount">${{number_format(Helper::totalCartPrice(),2)}}</span> -->
                 </div>
                 <!-- <a href="{{route('checkout')}}" class="btn animate">Checkout</a> -->
             </div>
@@ -23,8 +23,10 @@
     <!--/ End Shopping Item -->
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-5 ">
+
+
+    <div class="row justify-content-between " >
+        <div class="col-md-6 ">
             <div class="project-info-box mt-0">
                 <h5>{{$event->title}}<h5>
             </div>
@@ -61,10 +63,11 @@
                 </p>
             </div -->
             <!-- / project-info-box -->
-        </div><!-- / column -->
+        </div>
+        <!-- / column -->
 
-        <div class="col-md-7">
-            <img class="border p-12 mt-10" src="{{$event->bg_image_path}}" alt="project-image" class="rounded">
+        <div class="col-md-6">
+            <img class="border p-12 mt-10" src="{{$event->featured_image}}"  width="100%" height="600" alt="project-image" class="rounded">
         </div>
         <!-- / column -->
     </div>
@@ -77,7 +80,7 @@
                     @foreach($event->tickets as $ticket)
                     <div class="col-sm-3 mb-4">
                         <div class="card h-100">
-                            <img src="{{$event->bg_image_path}}" class="card-img-top" alt="green iguana" />
+                            <img src="{{$event->featured_image}}" class="card-img-top" alt="green iguana" />
                             <div class="card-body">
                                 <h4>{{$ticket->type}}</h4>
                                     <!-- <p class="card-text text-wrap">
@@ -90,6 +93,9 @@
                                 </div> -->
                             </div>
                             <div class="card-footer">
+                                <p>
+                                    Price : ${{$ticket->price}}
+                                </p>
                             <!-- <button class="btn btn-link" type="button">
                                 Learn More
                             </button> -->

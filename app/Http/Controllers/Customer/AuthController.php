@@ -88,7 +88,7 @@ class AuthController extends Controller
 
     public function logout(){
         Auth::guard('customer')->logout();
-        return redirect('/user/');
+        return redirect('/');
     }
 
     public function verify(Request $request){

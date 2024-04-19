@@ -90,7 +90,7 @@ class AuthController extends Controller
 
     public function logout(){
         Auth::guard('organiser')->logout();
-        return redirect('/organiser/');
+        return redirect('/');
     }
 
     public function verify(Request $request){

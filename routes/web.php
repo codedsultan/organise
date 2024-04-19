@@ -4,8 +4,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [EventController::class, 'index'])->name('event.index');
-Route::get('/{id}', [EventController::class, 'show'])->name('event.show');
+Route::get('/', [EventController::class, 'index'])->name('home');
+Route::get('/events/{id}', [EventController::class, 'show'])->name('event.show');
 
 //Cart section
     Route::get('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add-to-cart')->middleware('auth:customer');

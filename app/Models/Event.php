@@ -20,6 +20,9 @@ class Event extends Model implements HasMedia
 
     protected $appends = ['featured_image','event_images'];
 
+    // protected $dates = ['start_date', 'end_date'];
+
+
     protected $casts = [
         'start_date' => 'datetime:Y-m-d',
         'end_date' => 'datetime:Y-m-d',

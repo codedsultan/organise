@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->integer('event_id')->index();
             // $table->foreign('event_id')->references('id')->on('events');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('type');
-            $table->text('description');
+            // $table->text('description');
             $table->decimal('price');
             $table->integer('max_admit')->default(1);
             $table->integer('quantity_available')->nullable();

@@ -55,6 +55,10 @@ class EventFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Event $event) {
+            $event->uploadMediaFromUrl(
+                $event->bg_image_path,
+                'featured_image'
+            );
             Ticket::factory()->create([
                 'event_id' => $event->id,
                 'type' => 'silver',

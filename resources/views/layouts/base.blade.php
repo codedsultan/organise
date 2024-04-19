@@ -22,11 +22,16 @@
                 data-bs-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img src="/images/bootstrap-logo.svg" width="36" /></a>
+                <a class="navbar-brand" href="#"><img class="logo" src="{{ url('/logo.png')}}" /></a>
                 <div class="collapse navbar-collapse" id="navbarExample">
                 <ul class="navbar-nav me-auto mb-0">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                    @if(Auth::guard('customer')->check())
+                        <a class="nav-link" aria-current="page" href="{{ route('user.home') }}">Dashboard</a>
+                    @elseif(Auth::guard('organiser')->check())
+                        <a class="nav-link" aria-current="page" href="{{ route('organiser.home') }}">Dashboard</a>
+                    @endif
                     </li>
                     <!-- <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#">Team</a>
@@ -41,24 +46,63 @@
                     </ul>
                     </li> -->
                 </ul>
-                <div class="d-flex align-items-center flex-column flex-lg-row">
-
-                <a
-                    href="{{ route('user.login') }}"
-                    class="btn btn-primary mx-2"
-                >
-                    User Log in
-                </a>
-
-                <a
-                    href="{{ route('organiser.login') }}"
-                    class="btn btn-primary mx-2"
-                >
-                    Organiser Log in
-                </a>
+                <div>
                     <form class="me-2 mb-2 mb-lg-0">
-                    <input type="text" class="form-control form-control-sm" placeholder="Search" />
+                        <input type="text" class="form-control form-control-sm" placeholder="Search" />
                     </form>
+                 </div>
+
+                <div>
+                    @if (!Auth::guard('customer')->check() && !Auth::guard('organiser')->check()  )
+                        <a
+                            href="{{ route('user.login') }}"
+                            class="btn btn-primary mx-2"
+                        >
+                            User Log in
+                        </a>
+
+                        <a
+                            href="{{ route('organiser.login') }}"
+                            class="btn btn-primary mx-2"
+                        >
+                            Organiser Log in
+                        </a>
+                    @elseif (Auth::guard('customer')->check())
+
+                <!-- <div class="d-flex align-items-center flex-column flex-lg-row"> -->
+                        @if(Auth::guard('customer')->check())
+
+                            <a href="{{ route('user.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                            <form action="{{ route('user.logout') }}" method="post" class="d-none" id="logout-form">@csrf</form>
+
+                        @else
+                            <a
+                                href="{{ route('user.login') }}"
+                                class="btn btn-primary mx-2"
+                            >
+                                User Log in
+                            </a>
+                        @endif
+
+
+                    @elseif (Auth::guard('organiser')->check())
+                        @if(Auth::guard('organiser')->check())
+                            <a href="{{ route('organiser.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                            <form action="{{ route('organiser.logout') }}" method="post" class="d-none" id="logout-form">@csrf</form>
+
+
+                        @else
+                            <a
+                                href="{{ route('organiser.login') }}"
+                                class="btn btn-primary mx-2"
+                            >
+                                Organiser Log in
+                            </a>
+                        @endif
+                    @endif
+
+                </div>
+
 
                 </div>
                 </div>
@@ -74,9 +118,9 @@
 </html>
 
 <style>
-/* .row {
-    display: flex;
-    overflow: hidden;
+/* .logo {
+    width: 50px;
+    height: 50px;
 } */
 </style>
 

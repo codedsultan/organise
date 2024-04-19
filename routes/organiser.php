@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Organiser\AuthController;
+use App\Http\Controllers\Organiser\DashboardController;
 use App\Http\Controllers\Organiser\EventController;
 use App\Http\Controllers\Organiser\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
@@ -23,8 +24,9 @@ Route::prefix('organiser')->name('organiser.')->group(function(){
     });
 
     Route::middleware(['auth:organiser','verified_organiser'])->group(function(){
-        Route::view('/','dashboard.organiser.home')->name('home');
-        Route::view('/home','dashboard.organiser.home')->name('home');
+        // Route::view('/','dashboard.organiser.home')->name('home');
+        Route::get('/',[DashboardController::class,'index'])->name('home');
+        // Route::view('/home','dashboard.organiser.home')->name('home');
         Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 
 
