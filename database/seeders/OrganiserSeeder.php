@@ -13,10 +13,10 @@ class OrganiserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Organiser::factory()->create([
-        //     'name' => 'Segun',
-        //     'email' => 'segun@gmail.com',
-        // ]);
+        Organiser::factory()->create([
+            'name' => 'Colby',
+            'email' => 'colby@workwithmarque.com',
+        ]);
 
         Organiser::factory(10)->create();
     }
