@@ -31,6 +31,8 @@
                         <a class="nav-link" aria-current="page" href="{{ route('user.home') }}">Dashboard</a>
                     @elseif(Auth::guard('organiser')->check())
                         <a class="nav-link" aria-current="page" href="{{ route('organiser.home') }}">Dashboard</a>
+                    @elseif(Auth::guard('vendor')->check())
+                        <a class="nav-link" aria-current="page" href="{{ route('vendor.home') }}">Dashboard</a>
                     @endif
                     </li>
                     <!-- <li class="nav-item">
@@ -53,7 +55,7 @@
                  </div>
 
                 <div>
-                    @if (!Auth::guard('customer')->check() && !Auth::guard('organiser')->check()  )
+                    @if (!Auth::guard('customer')->check() && !Auth::guard('organiser')->check() && !Auth::guard('vendor')->check()  )
                         <a
                             href="{{ route('user.login') }}"
                             class="btn btn-primary mx-2"
@@ -66,6 +68,13 @@
                             class="btn btn-primary mx-2"
                         >
                             Organiser Log in
+                        </a>
+
+                        <a
+                            href="{{ route('vendor.login') }}"
+                            class="btn btn-primary mx-2"
+                        >
+                            Vendor Log in
                         </a>
                     @elseif (Auth::guard('customer')->check())
 
@@ -85,18 +94,18 @@
                         @endif
 
 
-                    @elseif (Auth::guard('organiser')->check())
-                        @if(Auth::guard('organiser')->check())
-                            <a href="{{ route('organiser.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
-                            <form action="{{ route('organiser.logout') }}" method="post" class="d-none" id="logout-form">@csrf</form>
+                    @elseif (Auth::guard('vendor')->check())
+                        @if(Auth::guard('vendor')->check())
+                            <a href="{{ route('vendor.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                            <form action="{{ route('vendor.logout') }}" method="post" class="d-none" id="logout-form">@csrf</form>
 
 
                         @else
                             <a
-                                href="{{ route('organiser.login') }}"
+                                href="{{ route('vendor.login') }}"
                                 class="btn btn-primary mx-2"
                             >
-                                Organiser Log in
+                                Vendor Log in
                             </a>
                         @endif
                     @endif
