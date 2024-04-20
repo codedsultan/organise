@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Organiser;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,11 +17,11 @@ use Illuminate\Support\Str;
 class ForgotPasswordController extends Controller
 {
     public function showForgotForm(){
-        return view('dashboard.user.forgot');
+        return view('dashboard.admin.forgot');
     }
     public function sendResetLink(Request $request){
         $request->validate([
-            'email'=>'required|email|exists:customers,email'
+            'email'=>'required|email|exists:users,email'
         ]);
 
         $token = Str::random(64);
@@ -48,7 +49,7 @@ class ForgotPasswordController extends Controller
 
    public function resetPassword(Request $request){
         $request->validate([
-            'email'=>'required|email|exists:customers,email',
+            'email'=>'required|email|exists:users,email',
             'password'=>'required|min:5|confirmed',
             'password_confirmation'=>'required',
         ]);
@@ -62,7 +63,7 @@ class ForgotPasswordController extends Controller
             return back()->withInput()->with('fail', 'Invalid token');
         }else{
 
-            Customer::where('email', $request->email)->update([
+            User::where('email', $request->email)->update([
                 'password'=> Hash::make($request->password)
                 ]);
 

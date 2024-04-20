@@ -24,6 +24,9 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
 
+                if($guard === 'web'){
+                    return redirect()->route('admin.home');
+                }
                 if($guard === 'customer'){
                     return redirect()->route('user.home');
                 }

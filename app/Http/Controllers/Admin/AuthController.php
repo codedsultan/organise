@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -19,10 +20,10 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:admins',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
-        Admin::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -33,7 +34,7 @@ class AuthController extends Controller
     function check(Request $request){
         //Validate Inputs
         $request->validate([
-           'email'=>'required|email|exists:admin,email',
+           'email'=>'required|email|exists:users,email',
            'password'=>'required|min:5|max:30'
         ],[
             'email.exists'=>'This email is exists already'
@@ -41,7 +42,7 @@ class AuthController extends Controller
 
         $creds = $request->only('email','password');
 
-        if( Auth::guard('user')->attempt($creds) ){
+        if( Auth::guard('web')->attempt($creds) ){
             return redirect()->route('admin.home');
         }else{
             return redirect()->route('admin.login')->with('fail','Incorrect Credentials');
@@ -49,7 +50,7 @@ class AuthController extends Controller
     }
 
     function logout(){
-        Auth::guard('admin')->logout();
-        return redirect('/');
+        Auth::guard('web')->logout();
+        return redirect('/admin');
     }
 }

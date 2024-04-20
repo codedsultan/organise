@@ -37,6 +37,9 @@ class RouteServiceProvider extends ServiceProvider
 
             //User Route File
             Route::middleware('web')
+                ->group(base_path('routes/admin.php'));
+
+            Route::middleware('web')
                 ->group(base_path('routes/customer.php'));
 
             Route::middleware('web')
@@ -48,9 +51,9 @@ class RouteServiceProvider extends ServiceProvider
             // $this->loadApiRoutes();
 
 
-            Route::middleware(['web', 'auth:sanctum'])
-                ->name('admin.')
-                ->group(base_path('routes/admin.php'));
+            // Route::middleware(['web', 'auth:sanctum'])
+            //     ->name('admin.')
+            //     ->group(base_path('routes/admin.php'));
 
         });
     }
