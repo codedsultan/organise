@@ -17,5 +17,17 @@ class CustomerSeeder extends Seeder
             'name' => 'Customer User',
             'email' => 'customer@example.com',
         ]);
+
+        Customer::factory()->create([
+            'name' => 'Segun',
+            'email' => 'segun@gmail.com',
+        ]);
+
+        Customer::factory()->create([
+            'name' => 'Colby',
+            'email' => 'colby@workwithmarque.com',
+        ]);
+
+        Customer::factory(10)->create();
     }
 }

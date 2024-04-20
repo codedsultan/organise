@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Organiser Register</title>
-    <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/fastbootstrap@2.2.0/dist/css/fastbootstrap.min.css" rel="stylesheet" integrity="sha256-V6lu+OdYNKTKTsVFBuQsyIlDiRWiOmtC8VQ8Lzdm2i4=" crossorigin="anonymous">
+
 </head>
 <body>
     <div class="container">
@@ -25,13 +26,13 @@
                     @endif
 
                     @csrf
-                     <div class="form-group">
-                         <label for="name">Name</label>
+                     <div class="form-group mb-3">
+                         <label for="name" class="form-label">Name</label>
                          <input type="text" class="form-control" name="name" placeholder="Enter full name" value="{{ old('name') }}">
                          <span class="text-danger">@error('name'){{ $message }}@enderror</span>
                      </div>
-                     <div class="form-group">
-                        <label for="email">Email</label>
+                     <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email</label>
                         <input type="text" class="form-control" name="email" placeholder="Enter email address" value="{{ old('email') }}">
                         <span class="text-danger">@error('email'){{ $message }}@enderror</span>
                     </div>
@@ -40,21 +41,20 @@
                         <input type="text" class="form-control" name="organisation" placeholder="Enter organisation name" value="{{ old('organisation') }}">
                         <span class="text-danger">@error('organisation'){{ $message }}@enderror</span>
                     </div> -->
-                     <div class="form-group">
-                         <label for="password">Password</label>
+                     <div class="form-group mb-3">
+                         <label for="password" class="form-label">Password</label>
                          <input type="password" class="form-control" name="password" placeholder="Enter password" value="{{ old('password') }}">
                          <span class="text-danger">@error('password'){{ $message }}@enderror</span>
                      </div>
-                     <div class="form-group">
-                        <label for="password_confirmation">Confirm Password</label>
+                     <div class="form-group mb-3">
+                        <label for="password_confirmation" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" name="password_confirmation" placeholder="Enter confirm password" value="{{ old('password_confirmation') }}">
                         <span class="text-danger">@error('password_confirmation'){{ $message }}@enderror</span>
                     </div>
-                     <div class="form-group">
+                     <div class="form-group mb-3">
                          <button type="submit" class="btn btn-primary">Register</button>
                      </div>
-                     <br>
-                     <a href="{{ route('organiser.login') }}">I already have an account, Login now</a>
+                     <a href="{{ route('organiser.login') }}">I already have an account</a>
                  </form>
             </div>
         </div>

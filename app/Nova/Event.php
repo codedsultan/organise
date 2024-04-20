@@ -5,6 +5,9 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\DateTime;
 
 class Event extends Resource
 {
@@ -20,7 +23,7 @@ class Event extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'tittle';
 
     /**
      * The columns that should be searched.
@@ -28,7 +31,7 @@ class Event extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id','title'
     ];
 
     /**
@@ -41,6 +44,62 @@ class Event extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('Title')
+                ->sortable()
+                ->onlyOnIndex()
+                ->displayUsing(function ($value) {
+                    return substr($value, 0, 35) . '...';
+                }),
+
+            Text::make('Title')
+                ->rules('required', 'string')
+                ->hideFromIndex(),
+
+            Text::make('Description')
+                ->sortable()
+                ->onlyOnIndex()
+                ->displayUsing(function ($value) {
+                    return substr($value, 0, 35) . '...';
+                }),
+
+            Text::make('Description')
+                ->rules('required', 'string')
+                ->hideFromIndex(),
+
+            Text::make('Location')
+                ->sortable()
+                ->rules('required', 'string'),
+
+            Text::make('Location Address')
+                ->sortable()
+                ->rules('required', 'string'),
+
+            Date::make('Start Date')
+                ->sortable()
+                ->rules('string'),
+
+            Date::make('End Date')
+                ->sortable()
+                ->rules('string'),
+
+            // DateTime::make('Start Time'),
+            // DateTime::make('End Time'),
+
+            Text::make('Start Time')->resolveUsing(function ($date) {
+                $timestamp = new \DateTime($date);
+                return $timestamp->format('H:i');
+            })->rules('date_format:"H:i"')->withMeta(['extraAttributes' => ['type' => 'time']]),
+
+            Text::make('End Time')->resolveUsing(function ($date) {
+                $timestamp = new \DateTime($date);
+                return $timestamp->format('H:i');
+            })->rules('date_format:"H:i"')->withMeta(['extraAttributes' => ['type' => 'time']]),
+
+            Text::make('Venue Name')
+                ->sortable()
+                ->rules( 'string'),
+
+
         ];
     }
 

@@ -10,6 +10,7 @@ use Illuminate\Database\Seeder;
 
 class EventSeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
      */
@@ -21,6 +22,10 @@ class EventSeeder extends Seeder
         ]);
 
         $event = Event::factory()->create([
+            'organiser_id' => $organiser->id
+        ]);
+
+        Event::factory(5)->create([
             'organiser_id' => $organiser->id
         ]);
 
@@ -45,6 +50,10 @@ class EventSeeder extends Seeder
         ]);
 
         $event1 = Event::factory()->create([
+            'organiser_id' => $organiser1->id
+        ]);
+
+        Event::factory(5)->create([
             'organiser_id' => $organiser1->id
         ]);
 

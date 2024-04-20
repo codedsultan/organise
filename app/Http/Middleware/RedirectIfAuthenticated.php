@@ -30,6 +30,9 @@ class RedirectIfAuthenticated
                 if($guard === 'organiser'){
                     return redirect()->route('organiser.home');
                 }
+                if($guard === 'vendor'){
+                    return redirect()->route('vendor.home');
+                }
                 return redirect()->route('home');
                 // return redirect(RouteServiceProvider::HOME);
             }
