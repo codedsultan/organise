@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Organiser;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class OrganiserSeeder extends Seeder
@@ -13,10 +12,10 @@ class OrganiserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Organiser::factory()->create([
-        //     'name' => 'Segun',
-        //     'email' => 'segun@gmail.com',
-        // ]);
+        Organiser::factory()->create([
+            'name' => 'Colby',
+            'email' => 'colby@workwithmarque.com',
+        ]);
 
         Organiser::factory(10)->create();
     }

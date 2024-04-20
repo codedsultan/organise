@@ -42,6 +42,9 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/organiser.php'));
 
+            Route::middleware('web')
+                ->group(base_path('routes/vendor.php'));
+
             // $this->loadApiRoutes();
 
 

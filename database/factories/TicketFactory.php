@@ -27,8 +27,8 @@ class TicketFactory extends Factory
             // $table->integer('quantity_sold')->nullable();
             // $table->boolean('is_paused')->default(false);
             'event_id' => fake()->name(),
-            'title' => fake()->title(),
-            'description' => fake()->paragraph(),
+            // 'title' => fake()->title(),
+            // 'description' => fake()->paragraph(),
             'price' => fake()->numberBetween(0,100),
             'type' => fake()->randomElement(['silver','gold','platinum']),
         ];

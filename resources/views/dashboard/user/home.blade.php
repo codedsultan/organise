@@ -1,18 +1,33 @@
-@extends('layouts.main-template')
-@section('title', isset($title) ? $title : 'Dashboard | Normal User')
+
+
+@extends('layouts.base')
 @section('content')
 
-<div class="row">
-    <div class="col-md-12 mt-3">
-        <h4>Normal user dashboard</h4>
-        <td>
-                                     <a href="{{ route('user.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
-                                     <form action="{{ route('user.logout') }}" method="post" class="d-none" id="logout-form">@csrf</form>
-                                 </td>
+<div class="layout">
+  <main class="layout-main px-4">
+    <h4>User Dashboard</h4>
+    <p>{{ Auth::guard('customer')->user()->name }}<p>
+    <p>{{ Auth::guard('customer')->user()->email }}<p>
 
-                                 <td>{{ Auth::guard('customer')->user()->name }}</td>
-                                 <td>{{ Auth::guard('customer')->user()->email }}</td>
-    </div>
+  </main>
+  <aside class="layout-sidebar border-end">
+    <ul class="list-group border-0" style="width:200px;">
+      <li class="list-group-item list-group-item-action">
+        <a href="#">My Tickets</a>
+      </li>
+      <!-- <li class="list-group-item list-group-item-action">
+        <a href="#">Menu 2</a>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <a href="#">Menu 3</a>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <a href="#">Menu 4</a>
+      </li> -->
+    </ul>
+  </aside>
 </div>
 
+
 @endsection
+

@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
             'verified_user'=>\App\Http\Middleware\IsUserVerifyEmail::class,
             'verified_organiser'=>\App\Http\Middleware\IsOrganiserVerifyEmail::class,
+            'verified_vendor'=>\App\Http\Middleware\IsVendorVerifyEmail::class,
         ]);
 
     })

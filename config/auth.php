@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'organisers',
         ],
+        'vendor' => [
+            'driver' => 'session',
+            'provider' => 'vendors',
+        ],
         'customer' => [
             'driver' => 'session',
             'provider' => 'customers',
@@ -83,6 +87,11 @@ return [
             'model' => App\Models\Organiser::class,
         ],
 
+        'vendors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Vendor::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -118,6 +127,13 @@ return [
 
         'organisers' => [
             'provider' => 'organisers',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens_o'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'vendors' => [
+            'provider' => 'vendors',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens_o'),
             'expire' => 60,
             'throttle' => 60,
